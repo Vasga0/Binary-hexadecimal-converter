@@ -1,0 +1,115 @@
+data_input = input('What number ?')
+while data_input == '':
+    data_input = input('What number ?')
+
+def binary(data_input):
+    
+    counter = 0
+    data_input = int(data_input)
+    x = 3
+    bin = ""
+
+    for i in range(data_input):
+        if data_input > 2**x:
+            x += 4
+        elif data_input < 2**x:
+            break
+
+    while data_input >= 0:
+
+        if x < 0:
+            x = 0
+            break
+
+        data_input -= 2**x
+        if data_input < 0:
+            data_input += 2**x
+            bin += '0'
+            
+        elif data_input >= 0:
+            bin += '1'
+        x -= 1
+        counter += 1
+
+        if counter == 4:
+            bin += ' '
+            counter = 0
+
+    return bin
+
+def hexadecimal(data_input):
+
+    data_input = int(data_input)
+    x = 3
+    bin = ""
+
+    for i in range(data_input):
+        if data_input > 2**x:
+            x += 4
+        elif data_input < 2**x:
+            break
+
+    while data_input >= 0:
+
+        if x < 0:
+            x = 0
+            break
+
+        data_input -= 2**x
+        if data_input < 0:
+            data_input += 2**x
+            bin += '0'
+            
+        elif data_input >= 0:
+            bin += '1'
+        x -= 1
+    
+    conteur_length = 0
+    length = len(bin)
+    base = 0
+    finish = 4
+    hexa = ""
+
+    while conteur_length != length:
+        
+        if bin[base:finish] == '0000':
+            hexa += '0'
+        elif bin[base:finish] == '0001':
+            hexa += '1'
+        elif bin[base:finish] == '0010':
+            hexa += '2'
+        elif bin[base:finish] == '0011':
+            hexa += '3'
+        elif bin[base:finish] == '0100':
+            hexa += '4'
+        elif bin[base:finish] == '0101':
+            hexa += '5'
+        elif bin[base:finish] == '0110':
+            hexa += '6'
+        elif bin[base:finish] == '0111':
+            hexa += '7'
+        elif bin[base:finish] == '1000':
+            hexa += '8'
+        elif bin[base:finish] == '1001':
+            hexa += '9'
+        elif bin[base:finish] == '1010':
+            hexa += 'A'
+        elif bin[base:finish] == '1011':
+            hexa += 'B'
+        elif bin[base:finish] == '1100':
+            hexa += 'C'
+        elif bin[base:finish] == '1101':
+            hexa += 'D'
+        elif bin[base:finish] == '1110':
+            hexa += 'E'
+        elif bin[base:finish] == '1111':
+            hexa += 'F'
+
+        base += 4
+        finish += 4
+        conteur_length += 4
+
+    return hexa
+
+
+print(f"Binary = {binary(data_input)} \nHexadecimal = {hexadecimal(data_input)} ")
